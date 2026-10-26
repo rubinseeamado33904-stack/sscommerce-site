@@ -1,0 +1,94 @@
+/* SS Commerce 하위 페이지 공통 (메인 index.html과 같은 색) */
+:root {
+  --bg: #FDF9F4; --band: #F6EFE6; --card: #FFFFFF; --fg: #141B2D; --muted: #5F6472; --soft: #8A8F9C;
+  --line: #EAE0D4; --accent: #FF6B0B; --accent-soft: #FFF1E6; --pill: #F3ECE3;
+  --auction: #E8312F; --gmarket: #00A651; --ease: cubic-bezier(.2, .7, .2, 1);
+}
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: dark; --bg: #14120F; --band: #1C1814; --card: #221D18; --fg: #F4EEE6; --muted: #B9AFA3; --soft: #8F877D;
+    --line: #342C24; --accent-soft: #34220F; --pill: #2B241D; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+  font-family: "Pretendard", -apple-system, "Segoe UI", "Malgun Gothic", sans-serif; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3 { letter-spacing: -0.035em; line-height: 1.3; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px) 72px; }
+.wrap.narrow { max-width: 780px; }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 16px; top: 16px; background: var(--card); padding: 8px 12px; z-index: 50; }
+
+header.top { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  padding: calc(14px + env(safe-area-inset-top, 0px)) clamp(16px, 4vw, 40px) 14px;
+  background: color-mix(in srgb, var(--bg) 86%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line); }
+.logo { display: inline-flex; align-items: center; gap: 8px; font-size: 19px; font-weight: 600; text-decoration: none; letter-spacing: -0.02em; }
+.logo img { width: 30px; height: 30px; }
+.logo b { font-weight: 900; }
+header.top nav { display: flex; gap: 6px; flex-wrap: wrap; }
+header.top nav a { text-decoration: none; font-size: 14.5px; font-weight: 700; padding: 6px 12px; border-radius: 999px; }
+header.top nav a:hover { background: var(--pill); }
+
+.crumbs { font-size: 13px; color: var(--soft); padding: 22px 0 0; }
+.crumbs a { text-decoration: none; }
+.crumbs a:hover { color: var(--accent); }
+.eyebrow { font-size: 12.5px; font-weight: 800; letter-spacing: .14em; color: var(--accent); margin: 0 0 10px; }
+.intro { padding: 36px 0 8px; }
+.intro h1, .prose h1 { font-size: clamp(30px, 5vw, 50px); font-weight: 900; margin: 0; }
+.lead { color: var(--muted); font-size: clamp(15.5px, 1.6vw, 18px); max-width: 640px; margin: 14px 0 0; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 28px 18px; margin-top: 36px; }
+.card { display: block; text-decoration: none; }
+.card figure { margin: 0; position: relative; aspect-ratio: 4 / 5; border-radius: 22px; overflow: hidden; background: #fff; border: 1px solid var(--line); }
+.card img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+.card:hover img { transform: scale(1.06); }
+.card .where { position: absolute; left: 12px; top: 12px; font-size: 11.5px; font-weight: 800; padding: 4px 10px; border-radius: 999px; color: #fff; background: var(--c); }
+.card.au { --c: var(--auction); } .card.gm { --c: var(--gmarket); }
+.card .nm { display: block; margin-top: 12px; font-weight: 800; font-size: 16px; letter-spacing: -0.02em; line-height: 1.4; }
+.card .note { display: block; color: var(--soft); font-size: 13px; margin-top: 2px; }
+@media (max-width: 520px) { .cards { grid-template-columns: repeat(2, 1fr); gap: 22px 12px; } .card .nm { font-size: 14.5px; } }
+
+.more { margin: 32px 0 0; }
+.btn { display: inline-block; text-decoration: none; font-weight: 800; font-size: 15px; padding: 12px 20px; border-radius: 999px; background: var(--fg); color: var(--bg); }
+.btn:hover { background: var(--accent); color: #fff; }
+
+.prose { margin-top: 48px; }
+.wrap.narrow .prose { margin-top: 28px; }
+.prose h2 { font-size: clamp(21px, 2.6vw, 27px); font-weight: 900; margin: 40px 0 10px; scroll-margin-top: 90px; }
+.prose p { font-size: 16.5px; margin: 0 0 12px; max-width: 70ch; }
+.meta { color: var(--soft); font-size: 13.5px; margin: 10px 0 0 !important; }
+.answer { margin-top: 22px !important; padding: 18px 20px; border-radius: 18px; background: var(--accent-soft); font-weight: 600; }
+.toc { margin: 24px 0 8px; padding: 18px 22px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); }
+.toc b { font-size: 14px; }
+.toc ul { margin: 8px 0 0; padding-left: 18px; }
+.toc a { text-decoration: none; color: var(--muted); }
+.toc a:hover { color: var(--accent); }
+
+.faq { margin-top: 56px; }
+.faq h2, .related h2, .sec { font-size: clamp(21px, 2.6vw, 27px); font-weight: 900; margin: 0 0 14px; }
+.faq details { border-top: 1px solid var(--line); padding: 4px 0; }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; font-weight: 800; padding: 14px 0; font-size: 16px; }
+.faq details p { margin: 0 0 16px; color: var(--muted); }
+
+.related { margin-top: 48px; }
+.related div { display: flex; flex-wrap: wrap; gap: 10px; }
+.related a { display: inline-flex; gap: 8px; text-decoration: none; font-weight: 700; padding: 10px 16px; border-radius: 999px; background: var(--pill); }
+.related a:hover { background: var(--accent-soft); color: var(--accent); }
+
+.sec { margin-top: 44px; }
+.g-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.g-card { display: block; text-decoration: none; padding: 22px; border-radius: 22px; background: var(--card); border: 1px solid var(--line); transition: transform .3s var(--ease), border-color .3s; }
+.g-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+.g-card .kw { font-size: 12px; font-weight: 800; color: var(--accent); }
+.g-card b { display: block; font-size: 18px; margin: 6px 0 6px; letter-spacing: -0.02em; line-height: 1.4; }
+.g-card p { margin: 0; color: var(--muted); font-size: 14px; }
+
+footer { border-top: 1px solid var(--line); background: var(--band); font-size: 13.5px; color: var(--muted); }
+footer .wrap { padding-top: 28px; padding-bottom: calc(36px + env(safe-area-inset-bottom, 0px)); }
+footer p { margin: 0 0 6px; }
+.f-brand b { color: var(--fg); }
+.f-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px !important; }
+.f-links a { text-decoration: none; font-weight: 700; }
+.f-links a:hover { color: var(--accent); }

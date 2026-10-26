@@ -3,11 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>SS Commerce | 에스에스 커머스</title>
-<meta name="description" content="SS Commerce(에스에스 커머스) — 해외 구매대행과 해외 수출을 하는 크로스보더 이커머스 기업. 네이버 스마트스토어·옥션·G마켓에서 만나보세요. 언제든지, 어디서든, 무엇이든.">
-<meta property="og:title" content="SS Commerce | 에스에스 커머스">
+<title>해외구매대행·해외수출 쇼핑몰 – 여권지갑·발라클라바·낚시용품 | SS Commerce 에스에스커머스</title>
+<meta name="description" content="해외구매대행 전문 에스에스커머스(SS Commerce). 가죽 여권지갑, RFID 카드지갑, 겨울 발라클라바, 피쉬그립 낚시용품 등 해외 상품 760여 개를 네이버 스마트스토어·옥션·G마켓에서 판매합니다.">
+<link rel="canonical" href="https://sscommerce.net/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SS Commerce 에스에스커머스">
+<meta property="og:url" content="https://sscommerce.net/">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="해외구매대행·해외수출 쇼핑몰 | SS Commerce 에스에스커머스">
 <meta property="og:description" content="세계의 좋은 상품을, 가장 쉬운 방법으로 전합니다. 스마트스토어 · 옥션 · G마켓">
 <meta property="og:image" content="https://sscommerce.net/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://sscommerce.net/#org", "name": "SS Commerce", "alternateName": ["에스에스 커머스", "에스에스커머스", "SS커머스"], "url": "https://sscommerce.net/", "logo": "https://sscommerce.net/character.svg", "email": "contact@sscommerce.net", "taxID": "866-06-03336", "description": "해외구매대행과 해외수출을 하는 크로스보더 이커머스 사업자", "address": {"@type": "PostalAddress", "addressRegion": "서울특별시", "addressLocality": "송파구", "addressCountry": "KR"}, "sameAs": ["https://smartstore.naver.com/ssmake100", "https://stores.auction.co.kr/sscommerse", "https://minishop.gmarket.co.kr/sscommerse"]}, {"@type": "WebSite", "@id": "https://sscommerce.net/#site", "url": "https://sscommerce.net/", "name": "SS Commerce 에스에스커머스", "inLanguage": "ko", "publisher": {"@id": "https://sscommerce.net/#org"}}]}</script>
 <meta name="theme-color" content="#FDF9F4">
 <link rel="icon" href="character.svg" type="image/svg+xml">
 <link rel="preload" as="image" href="img/hero.jpg">
@@ -199,6 +206,12 @@
   .card .nm { display: flex; justify-content: space-between; gap: 10px; align-items: start; margin-top: 14px; font-weight: 800; font-size: 16px; letter-spacing: -0.02em; line-height: 1.4; }
   .card .nm svg.ar { margin-top: 5px; }
   .card .note { display: block; color: var(--soft); font-size: 13px; margin-top: 4px; }
+  .cat-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 44px; }
+  .cat-links span { font-weight: 800; font-size: 14px; color: var(--soft); margin-right: 6px; }
+  .cat-links a { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 14.5px; padding: 9px 15px; border-radius: 999px; background: var(--pill); }
+  .cat-links a:hover { background: var(--accent-soft); color: var(--accent); }
+  .guide-links { display: grid; gap: 8px; margin: 22px 0 0; }
+  .guide-links a { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 15px; color: var(--accent); }
   @media (max-width: 1000px) { .cards { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 640px) { .cards { grid-template-columns: repeat(2, 1fr); gap: 22px 12px; } .card .nm { font-size: 14.5px; } }
 
@@ -297,6 +310,7 @@
     <a href="#stores">쇼핑몰</a>
     <a href="#goods">상품</a>
     <a href="#how">하는 일</a>
+    <a href="guide/">구매 가이드</a>
     <a href="#company">회사 정보</a>
   </nav>
   <a class="btn-pill" href="#stores">쇼핑몰 바로가기</a>
@@ -309,6 +323,7 @@
     <a href="#stores">쇼핑몰<svg class="ar"><use href="#ar"/></svg></a>
     <a href="#goods">상품<svg class="ar"><use href="#ar"/></svg></a>
     <a href="#how">하는 일<svg class="ar"><use href="#ar"/></svg></a>
+    <a href="guide/">구매 가이드<svg class="ar"><use href="#ar"/></svg></a>
     <a href="#company">회사 정보<svg class="ar"><use href="#ar"/></svg></a>
     <a href="mailto:contact@sscommerce.net">문의하기<svg class="ar"><use href="#ar"/></svg></a>
   </nav>
@@ -340,7 +355,7 @@
       <div class="hero-sub">
         <h1 class="reveal">세계의 좋은 상품을,<br><span class="hl">가장 쉬운 방법</span>으로 전합니다.</h1>
         <div class="reveal d1">
-          <p>에스에스 커머스는 해외의 좋은 상품을 직접 찾아 검수하고, 주문부터 통관·배송까지 책임지는 크로스보더 이커머스 기업입니다.
+          <p>에스에스 커머스는 <strong>해외구매대행·해외수출</strong> 전문 기업입니다. 해외의 좋은 상품을 직접 찾아 검수하고, 주문부터 통관·배송까지 책임지는 크로스보더 이커머스 기업입니다.
             네이버 스마트스토어 · 옥션 · G마켓에서 만나보세요.</p>
           <a class="hero-link" href="#stores">쇼핑몰 3곳 보기 <svg class="ar"><use href="#ar"/></svg></a>
         </div>
@@ -440,39 +455,40 @@
       </div>
       <div class="cards">
         <a class="card au reveal" data-c="travel" href="http://itempage3.auction.co.kr/DetailView.aspx?itemno=F689923813" target="_blank" rel="noopener">
-          <figure><img src="img/passport.jpg" alt="" loading="lazy"><span class="where">옥션</span></figure>
+          <figure><img src="img/passport.jpg" alt="여권·카드지갑 일체형 케이스" loading="lazy"><span class="where">옥션</span></figure>
           <span class="nm">여권·카드지갑 일체형 케이스<svg class="ar"><use href="#ar"/></svg></span><span class="note">여행 · 가죽 소품</span></a>
         <a class="card au reveal d1" data-c="winter" href="http://itempage3.auction.co.kr/DetailView.aspx?itemno=F689923747" target="_blank" rel="noopener">
-          <figure><img src="img/balaclava.jpg" alt="" loading="lazy"><span class="where">옥션</span></figure>
+          <figure><img src="img/balaclava.jpg" alt="겨울 니트 발라클라바" loading="lazy"><span class="where">옥션</span></figure>
           <span class="nm">겨울 니트 발라클라바<svg class="ar"><use href="#ar"/></svg></span><span class="note">귀·목까지 따뜻하게</span></a>
         <a class="card au reveal d2" data-c="fish" href="http://itempage3.auction.co.kr/DetailView.aspx?itemno=F657294089" target="_blank" rel="noopener">
-          <figure><img src="img/tacklebox.jpg" alt="" loading="lazy"><span class="where">옥션</span></figure>
+          <figure><img src="img/tacklebox.jpg" alt="에기케이스 70구 태클박스" loading="lazy"><span class="where">옥션</span></figure>
           <span class="nm">에기케이스 70구 태클박스<svg class="ar"><use href="#ar"/></svg></span><span class="note">낚시 · 수납</span></a>
         <a class="card gm reveal d3" data-c="winter" href="https://item.gmarket.co.kr/Item?goodsCode=4869649712" target="_blank" rel="noopener">
-          <figure><img src="img/padding.jpg" alt="" loading="lazy"><span class="where">G마켓</span></figure>
+          <figure><img src="img/padding.jpg" alt="여성 경량 롱패딩" loading="lazy"><span class="where">G마켓</span></figure>
           <span class="nm">여성 경량 롱패딩<svg class="ar"><use href="#ar"/></svg></span><span class="note">5가지 색상</span></a>
         <a class="card au reveal" data-c="travel" href="http://itempage3.auction.co.kr/DetailView.aspx?itemno=F689916302" target="_blank" rel="noopener">
-          <figure><img src="img/cardwallet.jpg" alt="" loading="lazy"><span class="where">옥션</span></figure>
+          <figure><img src="img/cardwallet.jpg" alt="천연가죽 RFID 카드지갑" loading="lazy"><span class="where">옥션</span></figure>
           <span class="nm">천연가죽 RFID 카드지갑<svg class="ar"><use href="#ar"/></svg></span><span class="note">스키밍 방지</span></a>
         <a class="card au reveal d1" data-c="fish" href="http://itempage3.auction.co.kr/DetailView.aspx?itemno=F657289106" target="_blank" rel="noopener">
-          <figure><img src="img/fishgrip.jpg" alt="" loading="lazy"><span class="where">옥션</span></figure>
+          <figure><img src="img/fishgrip.jpg" alt="피쉬그립 물고기 집게" loading="lazy"><span class="where">옥션</span></figure>
           <span class="nm">피쉬그립 물고기 집게<svg class="ar"><use href="#ar"/></svg></span><span class="note">무게 측정 · 360도 회전</span></a>
         <a class="card au reveal d2" data-c="diy" href="http://itempage3.auction.co.kr/DetailView.aspx?itemno=F689886065" target="_blank" rel="noopener">
-          <figure><img src="img/xmas.jpg" alt="" loading="lazy"><span class="where">옥션</span></figure>
+          <figure><img src="img/xmas.jpg" alt="크리스마스 뜨개 펜던트 DIY 키트" loading="lazy"><span class="where">옥션</span></figure>
           <span class="nm">크리스마스 뜨개 펜던트 DIY 키트<svg class="ar"><use href="#ar"/></svg></span><span class="note">트리 · 리스 장식</span></a>
         <a class="card au reveal d3" data-c="winter" href="http://itempage3.auction.co.kr/DetailView.aspx?itemno=F689923838" target="_blank" rel="noopener">
-          <figure><img src="img/beanie.jpg" alt="" loading="lazy"><span class="where">옥션</span></figure>
+          <figure><img src="img/beanie.jpg" alt="니트 귀마개 비니" loading="lazy"><span class="where">옥션</span></figure>
           <span class="nm">니트 귀마개 비니<svg class="ar"><use href="#ar"/></svg></span><span class="note">땋은 끈 포인트</span></a>
         <a class="card au reveal" data-c="travel" href="http://itempage3.auction.co.kr/DetailView.aspx?itemno=F689916462" target="_blank" rel="noopener">
-          <figure><img src="img/passport-wallet.jpg" alt="" loading="lazy"><span class="where">옥션</span></figure>
+          <figure><img src="img/passport-wallet.jpg" alt="다기능 가죽 여권지갑" loading="lazy"><span class="where">옥션</span></figure>
           <span class="nm">다기능 가죽 여권지갑<svg class="ar"><use href="#ar"/></svg></span><span class="note">항공권·카드 수납</span></a>
         <a class="card gm reveal d1" data-c="travel" href="https://item.gmarket.co.kr/Item?goodsCode=4882006198" target="_blank" rel="noopener">
-          <figure><img src="img/slimcard.jpg" alt="" loading="lazy"><span class="where">G마켓</span></figure>
+          <figure><img src="img/slimcard.jpg" alt="슬림 카드지갑 카드홀더" loading="lazy"><span class="where">G마켓</span></figure>
           <span class="nm">슬림 카드지갑 카드홀더<svg class="ar"><use href="#ar"/></svg></span><span class="note">카드 수십 장 한 번에</span></a>
         <a class="card gm reveal d2" data-c="fish" href="https://item.gmarket.co.kr/Item?goodsCode=4849481178" target="_blank" rel="noopener">
-          <figure><img src="img/hookcap.jpg" alt="" loading="lazy"><span class="where">G마켓</span></figure>
+          <figure><img src="img/hookcap.jpg" alt="에기 훅캡 세트" loading="lazy"><span class="where">G마켓</span></figure>
           <span class="nm">에기 훅캡 세트<svg class="ar"><use href="#ar"/></svg></span><span class="note">바늘 보호 · 릴홀더</span></a>
       </div>
+      <nav class="cat-links reveal" aria-label="카테고리별 상품 안내"><span>카테고리별로 자세히</span><a href="passport-wallet/">여권지갑<svg class="ar"><use href="#ar"/></svg></a><a href="card-wallet/">RFID 카드지갑<svg class="ar"><use href="#ar"/></svg></a><a href="balaclava/">발라클라바·비니<svg class="ar"><use href="#ar"/></svg></a><a href="fish-grip/">피쉬그립·에기케이스<svg class="ar"><use href="#ar"/></svg></a><a href="christmas-diy-kit/">크리스마스 DIY 키트<svg class="ar"><use href="#ar"/></svg></a></nav>
     </div>
   </section>
 
@@ -494,6 +510,7 @@
         <p class="eyebrow reveal">WHAT WE DO</p>
         <h2 class="h2 reveal d1">찾고, 확인하고,<br>안전하게 전합니다</h2>
         <p class="lead reveal d2">해외 마켓에서 좋은 상품을 발굴하고, 믿을 수 있는지 확인한 뒤, 주문·통관·배송까지 모든 단계를 직접 운영합니다.</p>
+        <p class="guide-links reveal d3"><a href="guide/overseas-purchase-agency/">해외구매대행이란? 주문 전 알아둘 5가지 <svg class="ar"><use href="#ar"/></svg></a><a href="guide/personal-customs-code/">개인통관고유부호 발급 방법 <svg class="ar"><use href="#ar"/></svg></a></p>
       </div>
       <ol class="rows">
         <li class="reveal"><span class="no">01</span><div><b>소싱</b><p>수요 있는 해외 상품을 발굴합니다.</p></div></li>
@@ -554,6 +571,7 @@
         <dt>소재지</dt><dd>서울특별시 송파구</dd>
         <dt>온라인 스토어</dt><dd><a href="https://smartstore.naver.com/ssmake100" target="_blank" rel="noopener">smartstore.naver.com/ssmake100</a></dd>
         <dt>옥션</dt><dd><a href="https://stores.auction.co.kr/sscommerse" target="_blank" rel="noopener">stores.auction.co.kr/sscommerse</a></dd>
+        <dt>구매 가이드</dt><dd><a href="guide/">배송·통관·상품 고르는 법</a></dd>
         <dt>G마켓</dt><dd><a href="https://minishop.gmarket.co.kr/sscommerse" target="_blank" rel="noopener">minishop.gmarket.co.kr/sscommerse</a></dd>
       </dl>
     </div>
