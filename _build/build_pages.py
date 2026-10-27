@@ -175,6 +175,7 @@ def head(title, desc, path, extra_ld=()):
 <link rel="icon" href="/character.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="/assets/sub.css">
+<link rel="alternate" type="application/rss+xml" title="SS Commerce 구매 가이드" href="/rss.xml">
 {"".join(ld(x) for x in extra_ld)}
 </head>
 <body>
@@ -340,6 +341,17 @@ def build_meta():
     lines += [f"- [{g['h1']}]({SITE}/guide/{g['slug']}/): {g['desc']}" for g in GUIDES]
     (ROOT / "llms.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
     (ROOT / f"{INDEXNOW_KEY}.txt").write_text(INDEXNOW_KEY, encoding="utf-8")
+
+    # RSS: 네이버 서치어드바이저 'RSS 제출'용. 새 글이 위로 오게
+    pub = "Tue, 27 Oct 2026 09:00:00 +0900"
+    items = [(g["h1"], f"/guide/{g['slug']}/", g["desc"]) for g in GUIDES] + [(c["h1"], f"/{c['slug']}/", c["desc"]) for c in CATEGORIES]
+    rss = ['<?xml version="1.0" encoding="UTF-8"?>', '<rss version="2.0"><channel>',
+           "<title>SS Commerce 구매 가이드</title>", f"<link>{SITE}/</link>",
+           "<description>해외구매대행 배송·통관·상품 고르는 법</description>", "<language>ko</language>"]
+    for t, u, d in items:
+        rss.append(f"<item><title>{e(t)}</title><link>{SITE}{u}</link><guid>{SITE}{u}</guid><description>{e(d)}</description><pubDate>{pub}</pubDate></item>")
+    rss.append("</channel></rss>")
+    (ROOT / "rss.xml").write_text("\n".join(rss) + "\n", encoding="utf-8")
     print("   sitemap.xml · robots.txt · llms.txt · IndexNow 키")
 
 def ping():
