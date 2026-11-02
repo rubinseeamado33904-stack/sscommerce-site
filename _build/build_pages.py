@@ -91,7 +91,7 @@ CATEGORIES = [
                ("주문 시기", "해외 구매대행 상품은 받기까지 보통 1~2주가 걸립니다. 크리스마스에 쓰려면 12월 초까지는 주문해 두는 것이 안전합니다.")],
          faq=[("완전 초보도 만들 수 있나요?", "기본 재료가 들어 있는 키트라 처음 하는 분도 시도할 수 있습니다. 난이도와 구성은 상세페이지에서 확인하세요."),
               ("언제 주문해야 크리스마스 전에 받나요?", "해외 배송 기간을 생각하면 12월 초, 늦어도 12월 둘째 주 전 주문을 권합니다.")],
-         related=["guide/overseas-purchase-agency"]),
+         related=["christmas-event", "guide/overseas-purchase-agency"]),
 ]
 
 # ---------- 가이드(정보 글): AI가 답으로 인용하기 좋은 문답형 ----------
@@ -145,7 +145,10 @@ GUIDES = [
          related=["card-wallet", "passport-wallet"]),
 ]
 
-NAV_LABEL = {c["slug"]: c["h1"] for c in CATEGORIES} | {"guide/" + g["slug"]: g["h1"] for g in GUIDES}
+# 손으로 만든 기획전 페이지(생성기가 덮어쓰지 않음): 사이트맵·llms·관련 링크에만 넣는다
+EVENTS = [("christmas-event", "크리스마스 장식 만들기 기획전", "뜨개 트리·리스 키트로 연말 장식을 직접 만드는 시즌 기획전. 크리스마스 전에 받으려면 12월 초까지 주문.")]
+
+NAV_LABEL = {c["slug"]: c["h1"] for c in CATEGORIES} | {"guide/" + g["slug"]: g["h1"] for g in GUIDES} | {slug: name for slug, name, _ in EVENTS}
 
 # ---------- 공통 조각 ----------
 e = html.escape
@@ -311,7 +314,7 @@ def build_guide_index():
     write(path, out)
 
 def all_urls():
-    return (["/"] + [f"/{c['slug']}/" for c in CATEGORIES] + ["/guide/"] + [f"/guide/{g['slug']}/" for g in GUIDES])
+    return (["/"] + [f"/{c['slug']}/" for c in CATEGORIES] + [f"/{s}/" for s, _, _ in EVENTS] + ["/guide/"] + [f"/guide/{g['slug']}/" for g in GUIDES])
 
 def build_meta():
     urls = all_urls()
@@ -337,6 +340,7 @@ def build_meta():
              f"- 스마트스토어: {NAVER}", f"- 옥션: {AUCTION}", f"- G마켓: {GMARKET}", "",
              "## 상품 카테고리"]
     lines += [f"- [{c['h1']}]({SITE}/{c['slug']}/): {c['desc']}" for c in CATEGORIES]
+    lines += ["", "## 기획전"] + [f"- [{n}]({SITE}/{s}/): {d}" for s, n, d in EVENTS]
     lines += ["", "## 구매 가이드"]
     lines += [f"- [{g['h1']}]({SITE}/guide/{g['slug']}/): {g['desc']}" for g in GUIDES]
     (ROOT / "llms.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
