@@ -27,17 +27,17 @@ au = lambda n: f"http://itempage3.auction.co.kr/DetailView.aspx?itemno={n}"
 gm = lambda n: f"https://item.gmarket.co.kr/Item?goodsCode={n}"
 
 PRODUCTS = {
-    "passport": ("여권·카드지갑 일체형 케이스", "여행 · 가죽 소품", "/img/passport.jpg", "옥션", au("F689923813")),
+    "passport": ("여권·카드지갑 일체형 케이스", "여행용 가죽 소품", "/img/passport.jpg", "옥션", au("F689923813")),
     "passport-wallet": ("다기능 가죽 여권지갑", "항공권·카드 수납", "/img/passport-wallet.jpg", "옥션", au("F689916462")),
     "cardwallet": ("천연가죽 RFID 카드지갑", "스키밍 방지", "/img/cardwallet.jpg", "옥션", au("F689916302")),
     "slimcard": ("슬림 카드지갑 카드홀더", "카드 수십 장 한 번에", "/img/slimcard.jpg", "G마켓", gm("4882006198")),
     "balaclava": ("겨울 니트 발라클라바", "귀·목까지 따뜻하게", "/img/balaclava.jpg", "옥션", au("F689923747")),
     "beanie": ("니트 귀마개 비니", "땋은 끈 포인트", "/img/beanie.jpg", "옥션", au("F689923838")),
     "padding": ("여성 경량 롱패딩", "5가지 색상", "/img/padding.jpg", "G마켓", gm("4869649712")),
-    "fishgrip": ("피쉬그립 물고기 집게", "무게 측정 · 360도 회전", "/img/fishgrip.jpg", "옥션", au("F657289106")),
-    "tacklebox": ("에기케이스 70구 태클박스", "낚시 · 수납", "/img/tacklebox.jpg", "옥션", au("F657294089")),
-    "hookcap": ("에기 훅캡 세트", "바늘 보호 · 릴홀더", "/img/hookcap.jpg", "G마켓", gm("4849481178")),
-    "xmas": ("크리스마스 뜨개 펜던트 DIY 키트", "트리 · 리스 장식", "/img/xmas.jpg", "옥션", au("F689886065")),
+    "fishgrip": ("피쉬그립 물고기 집게", "무게 측정, 360도 회전", "/img/fishgrip.jpg", "옥션", au("F657289106")),
+    "tacklebox": ("에기케이스 70구 태클박스", "에기 70개 수납", "/img/tacklebox.jpg", "옥션", au("F657294089")),
+    "hookcap": ("에기 훅캡 세트", "바늘 보호와 릴홀더", "/img/hookcap.jpg", "G마켓", gm("4849481178")),
+    "xmas": ("크리스마스 뜨개 펜던트 DIY 키트", "트리와 리스 장식", "/img/xmas.jpg", "옥션", au("F689886065")),
 }
 
 # ---------- 카테고리 페이지: 키워드 하나씩 ----------
@@ -210,7 +210,7 @@ def faq_block(faq):
     return f'<section class="faq"><h2>자주 묻는 질문</h2>{rows}</section>', data
 
 def related_block(slugs):
-    links = "".join(f'<a href="/{s}/">{e(NAV_LABEL[s])}<span aria-hidden="true">→</span></a>' for s in slugs)
+    links = "".join(f'<a href="/{s}/">{e(NAV_LABEL[s])}</a>' for s in slugs)
     return f'<section class="related"><h2>함께 보면 좋은 글</h2><div>{links}</div></section>'
 
 def card(key):
@@ -222,8 +222,11 @@ def card(key):
 
 FOOT = f"""<footer>
   <div class="wrap">
-    <p class="f-brand"><b>SS Commerce</b> 에스에스 커머스 · 해외구매대행 · 해외수출</p>
-    <p>상호 에스에스 커머스 · 사업자등록번호 866-06-03336 · 서울특별시 송파구 · <a href="mailto:contact@sscommerce.net">contact@sscommerce.net</a></p>
+    <p class="f-brand"><b>SS Commerce</b> 에스에스 커머스</p>
+    <p>해외구매대행과 해외수출을 합니다.</p>
+    <p>상호 에스에스 커머스, 사업자등록번호 866-06-03336</p>
+    <p>서울특별시 송파구</p>
+    <p><a href="mailto:contact@sscommerce.net">contact@sscommerce.net</a></p>
     <p class="f-links"><a href="/">홈</a><a href="/guide/">구매 가이드</a><a href="{NAVER}" target="_blank" rel="noopener">스마트스토어</a><a href="{AUCTION}" target="_blank" rel="noopener">옥션</a><a href="{GMARKET}" target="_blank" rel="noopener">G마켓</a></p>
   </div>
 </footer>
@@ -250,12 +253,11 @@ def build_category(c):
     out = head(c["title"], c["desc"], path, [cr_ld, items_ld, fq_ld]) + f"""<main id="main" class="wrap">
 {cr}
 <section class="intro">
-  <p class="eyebrow">SS COMMERCE · {e(c['kw'])}</p>
   <h1>{e(c['h1'])}</h1>
   <p class="lead">{e(c['lead'])}</p>
 </section>
 <section class="cards">{''.join(card(k) for k in c['items'])}</section>
-<p class="more"><a class="btn" href="{search}" target="_blank" rel="noopener">스마트스토어에서 ‘{e(c['search'])}’ 더 보기 →</a></p>
+<p class="more"><a class="btn" href="{search}" target="_blank" rel="noopener">스마트스토어에서 ‘{e(c['search'])}’ 더 보기</a></p>
 <article class="prose">{body}</article>
 {fq}
 {related_block(c['related'])}
@@ -277,16 +279,15 @@ def build_guide(g):
     out = head(g["title"], g["desc"], path, [cr_ld, art, fq_ld]) + f"""<main id="main" class="wrap narrow">
 {cr}
 <article class="prose">
-  <p class="eyebrow">구매 가이드 · {e(g['kw'])}</p>
   <h1>{e(g['h1'])}</h1>
-  <p class="meta">SS Commerce · <time datetime="{TODAY}">{TODAY.replace('-', '.')}</time></p>
+  <p class="meta">SS Commerce 작성, <time datetime="{TODAY}">{TODAY.replace('-', '.')}</time></p>
   <p class="answer">{e(g['lead'])}</p>
   <nav class="toc" aria-label="목차"><b>목차</b><ul>{toc}</ul></nav>
   {body}
 </article>
 {fq}
 {related_block(g['related'])}
-<p class="more"><a class="btn" href="/#goods">SS Commerce 상품 보러 가기 →</a></p>
+<p class="more"><a class="btn" href="/#goods">SS Commerce 상품 보러 가기</a></p>
 </main>
 """ + FOOT
     write(path, out)
@@ -294,14 +295,13 @@ def build_guide(g):
 def build_guide_index():
     path = "/guide/"
     cr, cr_ld = crumbs([("구매 가이드", path)])
-    cards = "".join(f'<a class="g-card" href="/guide/{g["slug"]}/"><span class="kw">{e(g["kw"])}</span><b>{e(g["h1"])}</b><p>{e(g["desc"])}</p></a>' for g in GUIDES)
-    cats = "".join(f'<a class="g-card" href="/{c["slug"]}/"><span class="kw">상품</span><b>{e(c["h1"])}</b><p>{e(c["lead"])}</p></a>' for c in CATEGORIES)
+    cards = "".join(f'<a class="g-card" href="/guide/{g["slug"]}/"><b>{e(g["h1"])}</b><p>{e(g["desc"])}</p></a>' for g in GUIDES)
+    cats = "".join(f'<a class="g-card" href="/{c["slug"]}/"><b>{e(c["h1"])}</b><p>{e(c["lead"])}</p></a>' for c in CATEGORIES)
     out = head("해외구매대행 구매 가이드 – 배송·통관·상품 고르는 법 | SS Commerce",
                "해외구매대행으로 살 때 궁금한 배송기간, 관세, 개인통관고유부호, 상품 고르는 법을 SS Commerce가 쉽게 정리합니다.",
                path, [cr_ld]) + f"""<main id="main" class="wrap">
 {cr}
 <section class="intro">
-  <p class="eyebrow">BUYING GUIDE</p>
   <h1>해외구매대행 구매 가이드</h1>
   <p class="lead">주문 전에 궁금한 것들을 문답으로 정리했습니다. 새 글은 꾸준히 추가됩니다.</p>
 </section>
